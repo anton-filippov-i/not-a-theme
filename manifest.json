@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Not A Theme",
+    "description": "Absolutely not a theme",
+    "version": "0.5",
+    "icons": {
+        "16": "16.png",
+        "48": "48.png",
+        "128": "128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.notalone.tv/room*"
+            ],
+            "css": [
+                "notatheme.css"
+            ],
+            "js": [
+                "notascript.js"
+            ]
+        }
+    ]
+}
