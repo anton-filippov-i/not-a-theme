@@ -136,7 +136,7 @@ html {
     height: 32px;
     margin-bottom: 0;
     background-position: left center;
-    background-size: contain;
+    background-size: 32px 100%;
     background-color: transparent;
     padding: 4px 20px 4px 40px;
     border-radius: 8px;
@@ -217,7 +217,7 @@ html {
 }
 
 .nat .nat__chat {
-    opacity: 0;
+    opacity: 1;
     position: absolute;
     top: 56px;
     right: 16px;
@@ -372,15 +372,14 @@ html {
     50% {transform: scale(1.2) translateX(8px);}
     100% {transform: scale(1) translateX(0);}
 }
-.nat .nat__chat li.chatMsg .right::before {
-    content:'·';
-    font-size: 16px;
-    line-height: 14px;
+.nat .nat__chat li.chatMsg .right .messages p:last-child::before {
+    content:'–';
+    font-size: 1em;
     position: absolute;
     display: inline-block;
     left: -14px;
     bottom: 0;
-    color: #35ad79;
+    color: white;
 }
 .nat .nat__chat li.chatMsg .info {
     width: 100%;
