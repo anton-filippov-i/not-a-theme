@@ -75,7 +75,14 @@ function main() {
     const lastMessage = document.querySelector(
       ".chatMsg:last-child .messages p:last-child"
     ).innerText;
+    const youtubeLink = /https:\/\/www\.youtube\.com\/\watch\?v=/;
     const triggerPattern = /\!\Y\{.*\}/;
+
+    if (youtubeLink.test(lastMessage)) {
+      let secondHalf = lastMessage.split(youtubeLink);
+      console.log(secondHalf[1].split(/\&|$/));
+      playVideo(secondHalf[1].split(/\&|$/)[0]);
+    }
 
     if (triggerPattern.test(lastMessage)) {
       const link = lastMessage.replace(/\!\Y\{/, "").replace(/\}/, "");
@@ -120,32 +127,32 @@ function main() {
         default:
           playVideo(link);
       }
+    }
 
-      function playVideo(link, type = null, timeout = null) {
-        const currentVideos = document.querySelectorAll(".nat__video");
-        let frameHtml = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${link}?autoplay=1&controls=0&modestbranding=0&showinfo=0&iv_load_policy=3" title="YouTube video player" frameborder="0" allow="autoplay;" allowfullscreen></iframe>`;
+    function playVideo(link, type = null, timeout = null) {
+      const currentVideos = document.querySelectorAll(".nat__video");
+      let frameHtml = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${link}?autoplay=1&controls=0&modestbranding=0&showinfo=0&iv_load_policy=3" title="YouTube video player" frameborder="0" allow="autoplay;" allowfullscreen></iframe>`;
 
-        if (currentVideos) {
-          killVideos();
-        }
-
-        let playVideo = document.createElement("div");
-
-        playVideo.classList.add("nat__video");
-        type ? playVideo.classList.add(type) : null;
-        playVideo.innerHTML = frameHtml;
-        document.querySelector("#new_player").appendChild(playVideo);
-
-        if (type) {
-          setTimeout(killVideos, timeout);
-        }
+      if (currentVideos) {
+        killVideos();
       }
 
-      function killVideos() {
-        document.querySelectorAll(".nat__video").forEach((v) => {
-          v.remove();
-        });
+      let playVideo = document.createElement("div");
+
+      playVideo.classList.add("nat__video");
+      type ? playVideo.classList.add(type) : null;
+      playVideo.innerHTML = frameHtml;
+      document.querySelector("#new_player").appendChild(playVideo);
+
+      if (type) {
+        setTimeout(killVideos, timeout);
       }
+    }
+
+    function killVideos() {
+      document.querySelectorAll(".nat__video").forEach((v) => {
+        v.remove();
+      });
     }
   });
 

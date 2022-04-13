@@ -378,7 +378,7 @@ html {
     position: absolute;
     display: inline-block;
     left: -14px;
-    bottom: 0;
+    top: 0;
     color: white;
 }
 .nat .nat__chat li.chatMsg .info {
