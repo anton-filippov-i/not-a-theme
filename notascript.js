@@ -70,7 +70,7 @@ function main() {
 
     setTimeout(() => {
       natChat.matches(":hover") ? "" : natChat.classList.remove("active");
-    }, 5000);
+    }, 10000);
 
     const lastMessage = document.querySelector(
       ".chatMsg:last-child .messages p:last-child"
@@ -159,6 +159,20 @@ function main() {
         v.remove();
       });
     }
+
+    function killOldMessages() {
+      let messages = document.querySelectorAll(".nat .nat__chat li.chatMsg");
+      if (messages.length > 8) {
+        messages[0].remove();
+      }
+      messages.forEach((m) => {
+        let innerP = m.querySelectorAll(".messages p");
+        if (innerP.length > 3) {
+          innerP[0].remove();
+        }
+      });
+    }
+    killOldMessages();
   });
 
   chatObserver.observe(natChat, { subtree: true, childList: true });

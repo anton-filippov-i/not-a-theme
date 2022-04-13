@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
 :root {
-    --glass-bg: linear-gradient(120deg,rgba(20, 20, 20, 0.5) 0%,rgba(10, 10, 10, 0.5) 100%);
+    --glass-bg: linear-gradient(160deg,rgba(20, 20, 20, 0.6) 0%,rgba(10, 10, 10, 0.6) 100%);
     --glass-button: rgba(113, 113, 113, 0.5);
     --glass-shadow: 0px 9px 16px rgba(0, 0, 0, 0.26), 0px 4.08175px 3.57381px rgba(0, 0, 0, 0.20), 0px 2.25252px 1.06402px rgba(0, 0, 0, 0.105012);
     --glass-shadow-2:  0px 9px 54px rgba(0, 0, 0, 0.26), 0px 3.75998px 22.5599px rgba(0, 0, 0, 0.186902), 0px 2.01027px 12.0616px rgba(0, 0, 0, 0.154988), 0px 1.12694px 6.76164px rgba(0, 0, 0, 0.13), 0px 0.598509px 3.59106px rgba(0, 0, 0, 0.105012), 0px 0.249053px 1.49432px rgba(0, 0, 0, 0.0730979);
@@ -108,6 +108,7 @@ html {
     top: 0;
     border-bottom: 1px solid #ffffff05;
     z-index: 15 !important;
+    transition: all .3s ease;
 }
 .nat #new_player .top .title {
     text-shadow: var(--text-shadow);
@@ -115,8 +116,15 @@ html {
 
 .nat #new_player ul.usersList {
     gap: 8px;
+    top: 48px;
     left: 16px;
     overflow: visible;
+    transition: all .3s ease;
+}
+.nat #new_player.noCursor ul.usersList {
+    top: 8px;
+    left: 8px;
+    gap: 4px;
 }
 .nat #new_player ul.usersList li.user span {
     overflow: hidden;
@@ -138,11 +146,25 @@ html {
     background-position: left center;
     background-size: 32px 100%;
     background-color: transparent;
-    padding: 4px 20px 4px 40px;
+    padding: 4px 16px 4px 40px;
     border-radius: 8px;
     position: relative;
     box-shadow: 0px 9px 16px rgba(0, 0, 0, 0.26), 0px 4.08175px 3.57381px rgba(0, 0, 0, 0.154988), 0px 2.25252px 1.06402px rgba(0, 0, 0, 0.105012);
     outline: var(--glass-outline);
+}
+.nat #new_player.noCursor ul.usersList li.user {
+    height: 16px;
+    padding: 0 16px 0 20px;
+    background-size: 16px 100%;
+}
+.nat #new_player.noCursor ul.usersList li.user .nickname {
+    display: none;
+}
+.nat #new_player.noCursor ul.usersList li.user .time {
+    line-height: 14px;
+}
+.nat #new_player.noCursor ul.usersList li.user .statusBar {
+    height: 16px;
 }
 .nat #new_player ul.usersList li.user > * {
     text-shadow: var(--text-shadow);
@@ -150,10 +172,20 @@ html {
 }
 .nat #new_player ul.usersList li.user .statusBar {
     flex-direction: row-reverse;
+    width: auto;
+    right: unset;
+    right: 0px;
+    width: 4px;
+}
+.nat #new_player ul.usersList li.user .statusBar .right {
+    display: none;
 }
 .nat #new_player ul.usersList li.user .statusBar i {
     margin: 6px 4px;
     font-size: 6px;
+}
+.nat #new_player.noCursor ul.usersList li.user .statusBar i {
+    margin: 4px 4px 0;
 }
 .nat #new_player ul.usersList li.user::before {
     box-sizing: border-box;
@@ -170,6 +202,10 @@ html {
     border-left: unset;
     height: 100%;
     width: calc(100% - 32px);
+}
+
+.nat #new_player.noCursor ul.usersList li.user::before {
+    width: calc(100% - 16px);
 }
 
 .nat .nat__player {
@@ -217,15 +253,15 @@ html {
 }
 
 .nat .nat__chat {
-    opacity: 1;
+    opacity: 0;
     position: absolute;
-    top: 56px;
+    top: 0;
     right: 16px;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 62px);
     width: 25%;
     max-width: 280px;
     background: transparent !important;
-    z-index: 10;
+    z-index: 2;
     transition: all .3s ease;
     overflow: visible !important;
     margin: 0 !important;
@@ -347,7 +383,6 @@ html {
     display: none;
     font-size: 0;
     margin-bottom: 0.8em;
-    transition: all .5s ease;
 }
 .nat .nat__chat li.chatMsg .right .messages p:nth-last-child(2){
     font-size: 12px;
@@ -363,13 +398,14 @@ html {
 .nat .nat__chat li.chatMsg .right .messages p:last-child {
     display: block;
     font-size: 14px;
+    line-height: 14px;
     margin-bottom: 0;
     position: relative;
     animation: appear .5s ease 1;
 }
 @keyframes appear {
-    0% {transform: scale(.8) translateX(0);}
-    50% {transform: scale(1.2) translateX(8px);}
+    0% {transform: scale(.9) translateX(-8px);}
+    50% {transform: scale(1.1) translateX(8px);}
     100% {transform: scale(1) translateX(0);}
 }
 .nat .nat__chat li.chatMsg .right .messages p:last-child::before {
