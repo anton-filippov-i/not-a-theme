@@ -80,8 +80,13 @@ function main() {
 
     if (youtubeLink.test(lastMessage)) {
       let secondHalf = lastMessage.split(youtubeLink);
-      console.log(secondHalf[1].split(/\&|$/));
-      playVideo(secondHalf[1].split(/\&|$/)[0]);
+      console.log(secondHalf[1]);
+      if (/\&t\=/.test(secondHalf[1])) {
+        let link = secondHalf[1].replace("&t=", "?start=") + "&";
+        playVideo(link);
+      } else {
+        playVideo(secondHalf[1] + "?");
+      }
     }
 
     if (triggerPattern.test(lastMessage)) {
@@ -92,37 +97,37 @@ function main() {
           killVideos();
           break;
         case "Чиллим":
-          playVideo("5qap5aO4i9A");
+          playVideo("5qap5aO4i9A?");
           break;
         case "Вот это поворот!":
-          playVideo("zVUDe_LoQas", "nat__video_sm", 2500);
+          playVideo("zVUDe_LoQas?", "nat__video_sm", 2500);
           break;
         case "Да ладно!":
-          playVideo("f3h5MCTQbqM", "nat__video_sm", 1500);
+          playVideo("f3h5MCTQbqM?", "nat__video_sm", 1500);
           break;
         case "Чево?!":
-          playVideo("kxHkvnPc47I", "nat__video_sm", 2300);
+          playVideo("kxHkvnPc47I?", "nat__video_sm", 2300);
           break;
         case "А че так можно было?":
-          playVideo("Iy7-GGuxaiI", "nat__video_sm", 5000);
+          playVideo("Iy7-GGuxaiI?", "nat__video_sm", 5000);
           break;
         case "Просто здравствуй":
-          playVideo("EGLi8_pmYBI", "nat__video_sm", 4500);
+          playVideo("EGLi8_pmYBI?", "nat__video_sm", 4500);
           break;
         case "Иди отсюда":
-          playVideo("zXz0InOf-z0", "nat__video_sm", 3500);
+          playVideo("zXz0InOf-z0?", "nat__video_sm", 3500);
           break;
         case "Сказочный":
-          playVideo("rD50VFsXPAg", "nat__video_sm", 3800);
+          playVideo("rD50VFsXPAg?", "nat__video_sm", 3800);
           break;
         case "Нет слов":
-          playVideo("_e09Hb_s8zM", "nat__video_sm", 4000);
+          playVideo("_e09Hb_s8zM?", "nat__video_sm", 4000);
           break;
         case "От скримеров":
-          playVideo("deWEGDRHy7c", "nat__video_sm", 3500);
+          playVideo("deWEGDRHy7c?", "nat__video_sm", 3500);
           break;
         case "Подозрительный":
-          playVideo("0VCUX_SAvwk", "nat__video_sm", 3200);
+          playVideo("0VCUX_SAvwk?", "nat__video_sm", 3200);
           break;
         default:
           playVideo(link);
@@ -131,7 +136,7 @@ function main() {
 
     function playVideo(link, type = null, timeout = null) {
       const currentVideos = document.querySelectorAll(".nat__video");
-      let frameHtml = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${link}?autoplay=1&controls=0&modestbranding=0&showinfo=0&iv_load_policy=3" title="YouTube video player" frameborder="0" allow="autoplay;" allowfullscreen></iframe>`;
+      let frameHtml = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${link}autoplay=1&controls=0&modestbranding=0&showinfo=0&iv_load_policy=3" title="YouTube video player" frameborder="0" allow="autoplay;" allowfullscreen></iframe>`;
 
       if (currentVideos) {
         killVideos();
