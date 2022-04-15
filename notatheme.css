@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
 :root {
-    --glass-bg: linear-gradient(145deg,rgba(40, 40, 40, 0.55) 0%,rgba(35, 35, 35, 0.55) 100%);
+    --glass-bg: radial-gradient(circle at 0%, rgba(25, 25, 25, 0.7) 0%,rgba(35, 35, 35, 0.5) 100%);
     --glass-button: rgba(113, 113, 113, 0.5);
-    --glass-shadow: 0px 9px 16px rgba(0, 0, 0, 0.20), 0px 4.08175px 3.57381px rgba(0, 0, 0, 0.14), 0px 2.25252px 1.06402px rgba(0, 0, 0, 0.04);
+    --glass-shadow: 0px 9px 16px rgba(0, 0, 0, 0.15), 0px 4.08175px 3.57381px rgba(0, 0, 0, 0.09), 0px 2.25252px 1.06402px rgba(0, 0, 0, 0.01);
     --glass-shadow-2:  0px 9px 54px rgba(0, 0, 0, 0.26), 0px 3.75998px 22.5599px rgba(0, 0, 0, 0.186902), 0px 2.01027px 12.0616px rgba(0, 0, 0, 0.154988), 0px 1.12694px 6.76164px rgba(0, 0, 0, 0.13), 0px 0.598509px 3.59106px rgba(0, 0, 0, 0.105012), 0px 0.249053px 1.49432px rgba(0, 0, 0, 0.0730979);
-    --glass-blur: blur(24px);
+    --glass-blur: blur(20px);
     --glass-outline: 1px solid #00000020;
     --gradient: linear-gradient(180deg, #FF00E5 0%, #00FFF0 100%);
     --gradient-ver: linear-gradient(45deg, #FF00E5 0%, #00FFF0 100%);
@@ -292,8 +292,8 @@ html {
     backdrop-filter: var(--glass-blur) !important;
     outline: var(--glass-outline);
     border: 1px solid #ffffff10;
-    border-top: 1px solid #ffffff20;
-    border-bottom: 1px solid #ffffff05;
+    border-top: 1px solid #ffffff05;
+    border-bottom: 1px solid #ffffff20;
     transition: all .3s ease;
     margin-left: 16px;
     width: calc(100% - 16px) !important;
@@ -333,12 +333,13 @@ html {
     box-shadow: var(--glass-shadow) !important;
     backdrop-filter: var(--glass-blur) !important;
     outline: var(--glass-outline);
-    color: white !important;
-    padding: 12px 24px 12px 12px;
+    color: rgba(255, 255, 255, 0.902) !important;
+    padding: 12px 24px 16px 12px;
     margin: 0 0 16px 16px;
     border: 1px solid #ffffff10;
-    border-top: 1px solid #ffffff20;
-    border-bottom: 1px solid #ffffff05;
+    border-top: 1px solid #ffffff10;
+    border-right: 1px solid #ffffff12;
+    border-bottom: 1.5px solid #ffffff15;
     width: auto;
     max-width: 100%;
     transition: all .3s ease;
@@ -450,7 +451,7 @@ html {
     left: -16px;
     width: 32px;
     height: 32px;
-    box-shadow:0px 4px 16px rgba(0, 0, 0, 0.50);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.45);
     outline: var(--glass-outline);
     border: 2px solid #ffffff10;
     border-top: 2px solid #ffffff25;
