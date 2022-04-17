@@ -14,6 +14,7 @@ function main() {
       "От скримеров",
       "Подозрительный",
       "Чиллим",
+      "Релаксим",
       "Убить видосы",
     ];
 
@@ -98,6 +99,9 @@ function main() {
           break;
         case "Чиллим":
           playVideo("5qap5aO4i9A?");
+          break;
+        case "Релаксим":
+          playVideo("Ek1-adoyE_0?");
           break;
         case "Вот это поворот!":
           playVideo("zVUDe_LoQas?", "nat__video_sm", 2500);
